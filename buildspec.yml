@@ -4,11 +4,23 @@ phases:
   install:
     runtime-versions:
       nodejs: 12
+  pre_build:
+    commands:
+      - echo "Clearing npm cache..."
+      - npm cache clean --force
+      - echo "Installing dependencies..."
+      - npm install
   build:
     commands:
-      - npm install
+      - echo "Running tests..."
+      - npm test
+  post_build:
+    commands:
+      - echo "Building the application..."
       - npm run build
 
 artifacts:
   files:
     - '**/*'
+  discard-paths: yes
+  base-directory: build
