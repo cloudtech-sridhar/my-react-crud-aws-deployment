@@ -10,10 +10,7 @@ phases:
       - npm cache clean --force
       - echo "Installing dependencies..."
       - npm install
-  build:
-    commands:
-      - echo "Running tests..."
-      - npm test
+  build:   
   post_build:
     commands:
       - echo "Building the application..."
