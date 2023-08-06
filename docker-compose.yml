@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: '3'
+services:
+  backend:
+    image: my-react-crud-aws-deployment-backend    
+    ports:
+      - '5000:5000'
+    environment:
+      - DB_HOST=my-database-postgresql.cnilbmzcb4cc.us-east-1.rds.amazonaws.com
+      - DB_PORT=5432
+      - DB_NAME=postgres_employee
+      - DB_USER=postgres_react
+      - DB_PASSWORD=postgres_password
+  frontend:
+    build:
+      context: ./frontend-crud-app
+    ports:
+      - '80:80'
